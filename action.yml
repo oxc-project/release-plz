@@ -16,10 +16,6 @@ runs:
         token: ${{ inputs.PAT }}
         persist-credentials: true # required by release-plz
 
-    - uses: oxc-project/setup-rust@d286d43bc1f606abbd98096666ff8be68c8d5f57 # v1.0.2
-      with:
-        restore-cache: false
-
-    - uses: MarcoIeni/release-plz-action@acb9246af4d59a270d1d4058a8b9af8c3f3a2559 # v0.5.117
+    - uses: oxc-project/release-plz-action@12ee013e577af39a0b75f282e04064658afca86e # v1.0.1
       env:
         GITHUB_TOKEN: ${{ inputs.PAT }}
