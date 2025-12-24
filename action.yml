@@ -4,8 +4,26 @@ description: Release Plz
 
 inputs:
   PAT:
+    description: "Personal Access Token for GitHub"
     required: true
     type: string
+
+outputs:
+  prs:
+    description: "The release PRs opened by release-plz. (Not useful for now. Use `pr` instead)"
+    value: ${{ steps.release-plz.outputs.prs }}
+  pr:
+    description: "The release PR opened by release-plz."
+    value: ${{ steps.release-plz.outputs.pr }}
+  releases:
+    description: "The JSON output of the `release` command."
+    value: ${{ steps.release-plz.outputs.releases }}
+  prs_created:
+    description: "Whether release-plz created any release PR."
+    value: ${{ steps.release-plz.outputs.prs_created }}
+  releases_created:
+    description: "Whether release-plz released any package."
+    value: ${{ steps.release-plz.outputs.releases_created }}
 
 runs:
   using: composite
@@ -17,5 +35,6 @@ runs:
         persist-credentials: true # required by release-plz
 
     - uses: oxc-project/release-plz-action@12ee013e577af39a0b75f282e04064658afca86e # v1.0.1
+      id: release-plz
       env:
         GITHUB_TOKEN: ${{ inputs.PAT }}
