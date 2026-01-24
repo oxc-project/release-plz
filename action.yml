@@ -34,7 +34,7 @@ runs:
         token: ${{ inputs.PAT }}
         persist-credentials: true # required by release-plz
 
-    - uses: oxc-project/release-plz-action@12ee013e577af39a0b75f282e04064658afca86e # v1.0.1
+    - uses: release-plz/action@adcc7904c46f9595dab7534d05c3fee773eac4bc # v0.5.122
       id: release-plz
       env:
         GITHUB_TOKEN: ${{ inputs.PAT }}
